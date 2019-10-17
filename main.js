@@ -10,7 +10,7 @@ const mainForm = document.querySelector('form')
 const stage = document.querySelector('main');
 
 //event Listeners
-
+window.addEventListener('load', handlePageLoad)
 addButton.addEventListener('click', handleSubmit);
 mainForm.addEventListener('keyup', toggleButton)
 stage.addEventListener('click', handleTicketClicks)
@@ -20,6 +20,10 @@ stage.addEventListener('click', handleTicketClicks)
 var allTickets = [];
 
 //functions
+
+function handlePageLoad() {
+  checkStorage()
+}
 
 function handleSubmit() {
   insatiateTicket()
@@ -46,7 +50,7 @@ function emptyInputs() {
 }
 
 function saveToStorage() {
-  localStorage.setItem('tickets', allTickets)
+  localStorage.setItem('tickets', JSON.stringify(allTickets))
 }
 
 function insatiateTicket() {
@@ -76,7 +80,25 @@ function deleteTicket(e) {
   if(e.target.classList.contains('delete-button')) {
     let id = parseInt(e.target.id)
     allTickets = allTickets.filter(ticket => ticket.id !== id)
+    e.target.closest('.ticket').remove()
+    saveToStorage()
   }
-  saveToStorage()
 }
+
+function displayManyTickets(tickets) {
+  tickets.forEach(ticket => {
+    displayTicket(ticket)
+  })
+}
+
+function checkStorage() {
+  if(JSON.parse(localStorage.getItem('tickets'))) {
+    allTickets = JSON.parse(localStorage.getItem('tickets'));
+    allTickets.map(ticket => new Ticket(ticket))
+    displayManyTickets(allTickets)
+  } else {
+    allTickets = []
+  }
+}
+
 
