@@ -1,9 +1,10 @@
 class Ticket {
-  constructor(title, theater, description, category) {
-    this.title= title;
-    this.theater = theater;
-    this.description = description;
-    this.category=category
+  constructor(ticket) {
+    this.title= ticket.title;
+    this.theater = ticket.theater;
+    this.description= ticket.description;
+    this.category= ticket.category
+    this.id = ticket.id || Date.now()
   }
-  
+
 }
