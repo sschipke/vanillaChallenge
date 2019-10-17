@@ -6,11 +6,13 @@ const theaterInput = document.getElementById('theater');
 const descriptionInput = document.getElementById('description');
 const categoryInput = document.getElementById('category-select');
 const addButton = document.getElementById('add-btn');
-const stage = document.querySelector('main')
+const mainForm = document.querySelector('form')
+const stage = document.querySelector('main');
 
 //event Listeners
 
-addButton.addEventListener('click', handleSubmit)
+addButton.addEventListener('click', handleSubmit);
+mainForm.addEventListener('keyup', toggleButton)
 
 // Variables
 
@@ -20,6 +22,21 @@ var allTickets = [];
 
 function handleSubmit() {
   insatiateTicket()
+  emptyInputs()
+}
+
+function toggleButton() {
+  if(!titleInput.value||!theaterInput.value||!descriptionInput.value) {
+    addButton.disabled = true;
+  } else {
+    addButton.disabled = false;
+  }
+}
+
+function emptyInputs() {
+  titleInput.innerText = "";
+  theaterInput.innerText = "";
+  descriptionInput.innerText = "";
 }
 
 function insatiateTicket() {
