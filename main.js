@@ -13,6 +13,7 @@ const stage = document.querySelector('main');
 
 addButton.addEventListener('click', handleSubmit);
 mainForm.addEventListener('keyup', toggleButton)
+stage.addEventListener('click', handleTicketClicks)
 
 // Variables
 
@@ -23,6 +24,11 @@ var allTickets = [];
 function handleSubmit() {
   insatiateTicket()
   emptyInputs()
+  toggleButton()
+}
+
+function handleTicketClicks(e) {
+  deleteTicket(e)
 }
 
 function toggleButton() {
@@ -34,9 +40,13 @@ function toggleButton() {
 }
 
 function emptyInputs() {
-  titleInput.innerText = "";
-  theaterInput.innerText = "";
-  descriptionInput.innerText = "";
+  titleInput.value = "";
+  theaterInput.value = "";
+  descriptionInput.value = "";
+}
+
+function saveToStorage() {
+  localStorage.setItem('tickets', allTickets)
 }
 
 function insatiateTicket() {
@@ -47,7 +57,7 @@ function insatiateTicket() {
   let newTicket = new Ticket({title, theater, description, category})
   allTickets.push(newTicket)
   displayTicket(newTicket)
-  console.log(allTickets)
+  saveToStorage()
 }
 
 function displayTicket(ticket) {
@@ -57,8 +67,16 @@ function displayTicket(ticket) {
         <p>${ticket.description}</p>
         <footer>
           <h4>${ticket.category}</h4>
-          <button type="button" id=${ticket.id}>Nevermind</button>
+          <button type="button" class="delete-button" id=${ticket.id}>Nevermind</button>
         </footer>
       </div>`)
+}
+
+function deleteTicket(e) {
+  if(e.target.classList.contains('delete-button')) {
+    let id = parseInt(e.target.id)
+    allTickets = allTickets.filter(ticket => ticket.id !== id)
+  }
+  saveToStorage()
 }
 
