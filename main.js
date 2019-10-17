@@ -7,7 +7,7 @@ const descriptionInput = document.getElementById('description');
 const categoryInput = document.getElementById('category-select');
 const addButton = document.getElementById('add-btn');
 const mainForm = document.querySelector('form')
-const stage = document.querySelector('main');
+const stage = document.querySelector('section');
 
 //event Listeners
 window.addEventListener('load', handlePageLoad)

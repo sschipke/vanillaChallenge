@@ -1,0 +1,53 @@
+header span {
+  color: blue;
+}
+
+main {
+  display: flex;
+  min-height: 90vh;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  width: 15%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+section {
+  background: papayawhip;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ticket {
+  border: 5px dashed aliceblue;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  height: 45%;
+  width: 30%;
+}
