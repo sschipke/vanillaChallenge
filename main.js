@@ -18,9 +18,8 @@ addButton.addEventListener('click', handleSubmit);
 mainForm.addEventListener('keyup', toggleButton);
 favFilter.addEventListener('click', filterFavorites);
 musicFilter.addEventListener('click', filterByCategory);
-playFilter.addEventListener('click', filterByCategory)
-
-stage.addEventListener('click', handleTicketClicks)
+playFilter.addEventListener('click', filterByCategory);
+stage.addEventListener('click', handleTicketClicks);
 
 // Variables
 
