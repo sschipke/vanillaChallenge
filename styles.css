@@ -116,3 +116,7 @@ footer button {
   background-repeat: no-repeat;
   color: white;
 }
+
+.favorite {
+  background: red;
+}

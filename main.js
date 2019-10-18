@@ -33,6 +33,7 @@ function handleSubmit() {
 
 function handleTicketClicks(e) {
   deleteTicket(e)
+  updateFavorite(e)
 }
 
 function toggleButton() {
@@ -71,7 +72,7 @@ function displayTicket(ticket) {
         <p>${ticket.description}</p>
         <h4>${ticket.category}</h4>
         <footer>
-        <button type="button" class="fave-button">  </button>
+        <button type="button" id=${ticket.id} class="fave-button">  </button>
           <button type="button" class="delete-button" id=${ticket.id}> X </button>
         </footer>
       </div>`)
@@ -95,10 +96,20 @@ function displayManyTickets(tickets) {
 function checkStorage() {
   if(JSON.parse(localStorage.getItem('tickets'))) {
     allTickets = JSON.parse(localStorage.getItem('tickets'));
-    allTickets.map(ticket => new Ticket(ticket))
+    allTickets = allTickets.map(ticket => new Ticket(ticket))
     displayManyTickets(allTickets)
   } else {
     allTickets = []
+  }
+}
+
+function updateFavorite(e) {
+  if(e.target.classList.contains('fave-button')) {
+    e.target.closest('.ticket').classList.toggle('favorite')
+    console.log()
+    let id = parseInt(e.target.id)
+    allTickets.find(ticket => ticket.id === id).toggleFavorite()
+    saveToStorage()
   }
 }
 
