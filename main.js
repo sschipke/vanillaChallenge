@@ -66,7 +66,8 @@ function insatiateTicket() {
 }
 
 function displayTicket(ticket) {
-  stage.insertAdjacentHTML('afterbegin', `<div class="ticket">
+  let faveClass = ticket.isFavorite ? 'favorite' : '';
+  stage.insertAdjacentHTML('afterbegin', `<div class="ticket ${faveClass}">
         <h2>Title: ${ticket.title}</h2>
         <h3>Theater: ${ticket.theater}</h3>
         <p>${ticket.description}</p>
