@@ -78,3 +78,41 @@ section {
   height: 45%;
   width: 30%;
 }
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+footer button {
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 15%;
+}
+
+.fave-button {
+  background: url(./images/theatre-masks.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fave-button:hover {
+  background: url(./images/theater.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.delete-button {
+  background: none;
+}
+
+.delete-button:hover {
+  background: url(./images/delete.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}

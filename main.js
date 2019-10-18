@@ -69,9 +69,10 @@ function displayTicket(ticket) {
         <h2>Title: ${ticket.title}</h2>
         <h3>Theater: ${ticket.theater}</h3>
         <p>${ticket.description}</p>
+        <h4>${ticket.category}</h4>
         <footer>
-          <h4>${ticket.category}</h4>
-          <button type="button" class="delete-button" id=${ticket.id}>Nevermind</button>
+        <button type="button" class="fave-button">  </button>
+          <button type="button" class="delete-button" id=${ticket.id}> X </button>
         </footer>
       </div>`)
 }
