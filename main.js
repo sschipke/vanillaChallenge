@@ -6,13 +6,20 @@ const theaterInput = document.getElementById('theater');
 const descriptionInput = document.getElementById('description');
 const categoryInput = document.getElementById('category-select');
 const addButton = document.getElementById('add-btn');
-const mainForm = document.querySelector('form')
+const favFilter = document.getElementById('favorites-filter');
+const musicFilter = document.getElementById('Musical');
+const playFilter = document.getElementById('Play');
+const mainForm = document.querySelector('form');
 const stage = document.querySelector('section');
 
 //event Listeners
 window.addEventListener('load', handlePageLoad)
 addButton.addEventListener('click', handleSubmit);
-mainForm.addEventListener('keyup', toggleButton)
+mainForm.addEventListener('keyup', toggleButton);
+favFilter.addEventListener('click', filterFavorites);
+musicFilter.addEventListener('click', filterByCategory);
+playFilter.addEventListener('click', filterByCategory)
+
 stage.addEventListener('click', handleTicketClicks)
 
 // Variables
@@ -94,6 +101,10 @@ function displayManyTickets(tickets) {
   })
 }
 
+function clearStage() {
+  stage.innerHTML = '';
+}
+
 function checkStorage() {
   if(JSON.parse(localStorage.getItem('tickets'))) {
     allTickets = JSON.parse(localStorage.getItem('tickets'));
@@ -112,6 +123,19 @@ function updateFavorite(e) {
     allTickets.find(ticket => ticket.id === id).toggleFavorite()
     saveToStorage()
   }
+}
+
+function filterFavorites() {
+  clearStage()
+  let favorites = allTickets.filter(ticket => ticket.isFavorite);
+  displayManyTickets(favorites);
+}
+
+function filterByCategory(e) {
+  let category = e.target.id
+  clearStage()
+  let ticksByCategory = allTickets.filter(ticket => ticket.category === category)
+  displayManyTickets(ticksByCategory)
 }
 
 
